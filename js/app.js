@@ -47,6 +47,27 @@ window.onload = () => {
         btnContacto.addEventListener('click', (e) => {
             validarFormulario(e)
         })
+
+        const validarFormulario = (e) => {
+            validarRequeridos(e)
+            validarComunicacion(e)
+        }
+
+
+        const validarComunicacion = (e) => {
+            let opcion = ''
+            radioComunicacion.forEach(radio => {
+                if (radio.checked)
+                    opcion = radio.value
+            });
+
+
+            if (opcion === 'email')
+                validarEmail(e)
+
+            if (opcion === 'telefono')
+                validarTelefono(e)
+        }
     }
 
 
@@ -54,17 +75,6 @@ window.onload = () => {
 
 
 
-
-
-
-
-
-
-
-    const validarFormulario = (e) => {
-        validarRequeridos(e)
-        validarComunicacion(e)
-    }
 
     const validarRequeridos = (e) => {
         let requeridos = document.getElementsByClassName('campo-requerido')
@@ -88,20 +98,7 @@ window.onload = () => {
     }
 
 
-    const validarComunicacion = (e) => {
-        let opcion = ''
-        radioComunicacion.forEach(radio => {
-            if (radio.checked)
-                opcion = radio.value
-        });
 
-
-        if (opcion === 'email')
-            validarEmail(e)
-
-        if (opcion === 'telefono')
-            validarTelefono(e)
-    }
 
     const validarEmail = (e) => {
         let email = document.getElementById('email')
