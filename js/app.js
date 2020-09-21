@@ -1,67 +1,65 @@
 window.onload = () => {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    let pagina = document.getElementById('pagina').value;
 
 
     // -------------------- FORMULARIO ----------------------------------------
-    let btnContacto = document.getElementById('btnContacto')
-    let formularioContacto = document.getElementById('formularioContacto')
-    let radioComunicacion = document.getElementsByName('comunicacion')
-    let campoEmail = document.getElementById('campoEmail')
-    let campoTelefono = document.getElementById('campoTelefono')
 
-    formularioContacto.onsubmit = (e) => {
-        e.preventDefault()
-        document.getElementById('nombres').value = '';
-        document.getElementById('apellidos').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('telefono').value = '';
-        document.getElementById('mensaje').value = '';
+    if (pagina === 'contacto') {
 
-        setTimeout(() => {
-            alert("EL MENSAJE SE HA ENVIADO EXITOSAMENTE")
-        }, 300);
+        let btnContacto = document.getElementById('btnContacto')
+        let formularioContacto = document.getElementById('formularioContacto')
+        let radioComunicacion = document.getElementsByName('comunicacion')
+        let campoEmail = document.getElementById('campoEmail')
+        let campoTelefono = document.getElementById('campoTelefono')
+
+        formularioContacto.onsubmit = (e) => {
+            e.preventDefault()
+            document.getElementById('nombres').value = '';
+            document.getElementById('apellidos').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('telefono').value = '';
+            document.getElementById('mensaje').value = '';
+
+            setTimeout(() => {
+                alert("EL MENSAJE SE HA ENVIADO EXITOSAMENTE")
+            }, 300);
+        }
+
+        radioComunicacion.forEach(radio => {
+            radio.addEventListener('change', () => {
+                campoEmail.classList.remove('d-block')
+                campoTelefono.classList.remove('d-block')
+                campoEmail.classList.add('d-none')
+                campoTelefono.classList.add('d-none')
+                if (radio.value === 'email') {
+                    campoEmail.classList.remove('d-none')
+                    campoEmail.classList.add('d-block')
+                }
+                if (radio.value === 'telefono') {
+                    campoTelefono.classList.remove('d-none')
+                    campoTelefono.classList.add('d-block')
+                }
+
+            })
+        });
+
+        btnContacto.addEventListener('click', (e) => {
+            validarFormulario(e)
+        })
     }
 
-    radioComunicacion.forEach(radio => {
-        radio.addEventListener('change', () => {
-            campoEmail.classList.remove('d-block')
-            campoTelefono.classList.remove('d-block')
-            campoEmail.classList.add('d-none')
-            campoTelefono.classList.add('d-none')
-            if (radio.value === 'email') {
-                campoEmail.classList.remove('d-none')
-                campoEmail.classList.add('d-block')
-            }
-            if (radio.value === 'telefono') {
-                campoTelefono.classList.remove('d-none')
-                campoTelefono.classList.add('d-block')
-            }
 
-        })
-    });
 
-    btnContacto.addEventListener('click', (e) => {
-        validarFormulario(e)
-    })
+
+
+
+
+
+
+
+
+
 
     const validarFormulario = (e) => {
         validarRequeridos(e)
