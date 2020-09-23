@@ -126,15 +126,16 @@ window.onload = () => {
         let telefono = document.getElementById('telefono')
         let telefonoRegex = /^([0-9])*$/;
 
-        let padre = telefono.parentNode
+        let padre = telefono.parentNode.parentNode
         let error = padre.childNodes[5]
 
         telefono.classList.remove('border-danger')
         error.classList.remove('d-block')
+        error.innerHTML = "";
 
         if (telefono.value.trim() === '' || !telefonoRegex.test(telefono.value)) {
             if (telefono.value.trim() === '')
-                error.innerHTML = 'Campo requerido'
+                error.innerHTML = 'Campo requerido y numerico'
             else
                 error.innerHTML = 'Solo ingresar numeros'
 
