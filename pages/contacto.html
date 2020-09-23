@@ -101,7 +101,11 @@
                     </div>
                     <div class="d-none" id="campoTelefono">
                         <label for="telefono" class="form-label">Telefono (*)</label>
-                        <input type="number" id="telefono" class="form-control" aria-describedby="passwordHelpBlock">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">+56</span>
+                            <input type="number" id="telefono" class="form-control"
+                                aria-describedby="passwordHelpBlock">
+                        </div>
                         <div class="form-text descripcion-error text-danger d-none">
                             Campo requerido
                         </div>
